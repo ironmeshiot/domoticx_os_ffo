@@ -1,0 +1,17 @@
+{
+  "name": "domoticx-os-ffo",
+  "version": "1.0.0",
+  "description": "DomoticX OS - Fail-Fast Optimization Version",
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "IronMesh",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
