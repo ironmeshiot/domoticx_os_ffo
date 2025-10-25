@@ -1,0 +1,541 @@
+/* Estilos para Biblioteca de Sensores y Actuadores + Asignaciones */
+
+/* ========== BIBLIOTECA (DEFINICIONES) ========== */
+.gestion-sensores,
+.gestion-actuadores {
+  width: 100%;
+  padding: 1rem;
+}
+
+.header-sensores,
+.header-actuadores {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #394150;
+}
+
+.header-sensores h3,
+.header-actuadores h3 {
+  color: #e6e6e6;
+  margin-bottom: 0.5rem;
+}
+
+.descripcion-biblioteca {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.btn-agregar {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.3);
+}
+
+.btn-agregar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.4);
+}
+
+/* ========== GRID DE DEFINICIONES ========== */
+.grid-definiciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-definicion {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.card-definicion:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.2);
+  transform: translateY(-4px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #394150;
+}
+
+.card-header h4 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 1.1rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-tipo-temperatura { background: #ef4444; color: white; }
+.badge-tipo-humedad { background: #3b82f6; color: white; }
+.badge-tipo-luz { background: #fbbf24; color: #1e293b; }
+.badge-tipo-movimiento { background: #8b5cf6; color: white; }
+.badge-tipo-gas { background: #f97316; color: white; }
+.badge-tipo-presion { background: #06b6d4; color: white; }
+.badge-tipo-distancia { background: #10b981; color: white; }
+.badge-tipo-corriente { background: #ec4899; color: white; }
+.badge-tipo-voltaje { background: #a855f7; color: white; }
+.badge-tipo-ph { background: #14b8a6; color: white; }
+.badge-tipo-co2 { background: #64748b; color: white; }
+.badge-tipo-sonido { background: #84cc16; color: white; }
+.badge-tipo-relay { background: #dc2626; color: white; }
+.badge-tipo-dimmer { background: #f59e0b; color: white; }
+.badge-tipo-servo { background: #6366f1; color: white; }
+.badge-tipo-motor { background: #0ea5e9; color: white; }
+.badge-tipo-led { background: #eab308; color: #1e293b; }
+.badge-tipo-ventilador { background: #22d3ee; color: #1e293b; }
+.badge-tipo-valvula { background: #14b8a6; color: white; }
+.badge-tipo-bomba { background: #3b82f6; color: white; }
+.badge-tipo-electrovalvula { background: #6366f1; color: white; }
+.badge-tipo-otro { background: #64748b; color: white; }
+
+.card-body {
+  margin: 1rem 0;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+.card-body p {
+  margin: 0.5rem 0;
+}
+
+.card-body strong {
+  color: #f1f5f9;
+  margin-right: 0.5rem;
+}
+
+.card-body .notas {
+  background: #0f172a;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border-left: 3px solid #60a5fa;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #394150;
+}
+
+.btn-link {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  background: #334155;
+  color: #94a3b8;
+  text-decoration: none;
+  border: 1px solid #475569;
+  transition: all 0.2s;
+}
+
+.btn-link:hover {
+  background: #475569;
+  color: #e2e8f0;
+  border-color: #60a5fa;
+}
+
+.btn-editar {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  background: #1e40af;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-editar:hover {
+  background: #2563eb;
+}
+
+.btn-eliminar {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-eliminar:hover {
+  background: #ef4444;
+}
+
+/* ========== MODAL FORMULARIO ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.modal-form {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #334155;
+  position: sticky;
+  top: 0;
+  background: #1e293b;
+  z-index: 10;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 1.25rem;
+}
+
+.btn-cerrar {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.btn-cerrar:hover {
+  color: #ef4444;
+}
+
+.form-definicion,
+.form-asignacion {
+  padding: 1.5rem;
+}
+
+.seccion-form {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.seccion-form:last-of-type {
+  border-bottom: none;
+}
+
+.seccion-form h4 {
+  color: #60a5fa;
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #334155;
+}
+
+.btn-cancelar {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.btn-cancelar:hover {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.btn-guardar {
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.btn-guardar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+/* ========== MENSAJES VACÍOS ========== */
+.mensaje-vacio {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #94a3b8;
+}
+
+.mensaje-vacio p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.mensaje-vacio .subtexto {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* ========== ASIGNACIONES (TABLA) ========== */
+.asignaciones-sensor-nodo,
+.asignaciones-actuador-nodo {
+  width: 100%;
+  padding: 1rem;
+}
+
+.header-asignaciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #394150;
+}
+
+.header-asignaciones h4 {
+  color: #e6e6e6;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.tabla-asignaciones {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0f172a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-asignaciones thead {
+  background: #1e293b;
+}
+
+.tabla-asignaciones th {
+  color: #cbd5e1;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #334155;
+}
+
+.tabla-asignaciones td {
+  color: #94a3b8;
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.tabla-asignaciones tr:hover td {
+  background: #1e293b;
+}
+
+.pin-cell {
+  font-weight: 600;
+}
+
+.pin-badge {
+  display: inline-block;
+  background: #334155;
+  color: #60a5fa;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.subtexto {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.ubicacion-cell {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge-activo {
+  background: #059669;
+  color: white;
+}
+
+.badge-inactivo {
+  background: #64748b;
+  color: white;
+}
+
+.acciones-cell {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid #475569;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.btn-editar-mini:hover {
+  background: #1e40af;
+  border-color: #2563eb;
+}
+
+.btn-eliminar-mini:hover {
+  background: #dc2626;
+  border-color: #ef4444;
+}
+
+/* ========== INFO DEFINICIÓN EN FORM ========== */
+.info-definicion {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #0f172a;
+  border-left: 3px solid #60a5fa;
+  border-radius: 4px;
+}
+
+.info-definicion .specs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.info-definicion .specs span {
+  background: #1e293b;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.advertencia {
+  color: #f59e0b;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: inline-block;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .grid-definiciones {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tabla-asignaciones {
+    font-size: 0.85rem;
+  }
+
+  .tabla-asignaciones th,
+  .tabla-asignaciones td {
+    padding: 0.75rem 0.5rem;
+  }
+}

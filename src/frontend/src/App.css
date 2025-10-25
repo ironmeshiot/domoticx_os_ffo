@@ -1,0 +1,89 @@
+/* Estilos globales */
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    background: var(--dark-bg) !important;
+    color: var(--text-primary) !important;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Asegurarse de que todos los contenedores tengan fondo oscuro */
+div, section, aside, nav, main, header, footer {
+    background-color: var(--dark-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.app-root {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%) !important;
+    color: var(--text-primary) !important;
+}
+
+header {
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.header-logo {
+    height: 72px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+nav button:hover {
+    background: var(--primary-color);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+}
+
+main {
+    padding: 0rem 2rem 2rem; /* cero padding arriba para pegar el contenido al menú */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+    
+    nav {
+        flex-direction: column;
+    }
+    
+    nav button {
+        width: 100%;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+}

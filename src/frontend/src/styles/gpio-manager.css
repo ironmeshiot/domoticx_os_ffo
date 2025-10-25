@@ -1,0 +1,192 @@
+.gpio-manager {
+  width: 100%;
+}
+
+/* Grid de GPIOs */
+.gpio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.gpio-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.4rem;
+  border-radius: 8px;
+  border: 2px solid;
+  cursor: help;
+  transition: all 0.2s ease;
+  min-height: 90px;
+  position: relative;
+}
+
+.gpio-pin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto clickeable */
+.gpio-clickeable {
+  cursor: pointer !important;
+  transition: all 0.25s ease;
+}
+
+.gpio-clickeable:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(125, 211, 252, 0.3);
+  border-color: #7dd3fc !important;
+}
+
+.gpio-clickeable:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.gpio-number {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.15rem;
+  color: #f1f5f9;
+}
+
+.gpio-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  color: #cbd5e1;
+  text-align: center;
+}
+
+.gpio-function {
+  font-size: 0.65rem;
+  margin-bottom: 0.25rem;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gpio-status {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+}
+
+/* Estados de GPIO */
+.gpio-libre {
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #94a3b8;
+}
+
+.gpio-sensor {
+  background-color: #1e3a5f;
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+.gpio-actuador {
+  background-color: #2d1f42;
+  border-color: #8b5cf6;
+  color: #c4b5fd;
+}
+
+.gpio-conflicto {
+  background-color: #3f1e1e;
+  border-color: #dc2626;
+  color: #fca5a5;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Restricciones de hardware */
+.gpio-input-only {
+  border-style: dashed;
+}
+
+.gpio-restricted {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gpio-strapping::after {
+  content: '⚠';
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 0.8rem;
+  color: #fbbf24;
+}
+
+.gpio-restricted .gpio-status::after {
+  content: ' 🔒';
+  font-size: 0.6rem;
+}
+
+/* Leyenda */
+.legend-libre {
+  background-color: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: #94a3b8 !important;
+}
+
+.legend-sensor {
+  background-color: #1e3a5f !important;
+  border: 1px solid #3b82f6 !important;
+  color: #93c5fd !important;
+}
+
+.legend-actuador {
+  background-color: #2d1f42 !important;
+  border: 1px solid #8b5cf6 !important;
+  color: #c4b5fd !important;
+}
+
+.legend-conflicto {
+  background-color: #3f1e1e !important;
+  border: 1px solid #dc2626 !important;
+  color: #fca5a5 !important;
+}
+
+.legend-input-only {
+  background-color: #1e293b !important;
+  border: 1px dashed #475569 !important;
+  color: #94a3b8 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gpio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .gpio-pin {
+    padding: 0.5rem 0.25rem;
+    min-height: 60px;
+  }
+  
+  .gpio-number {
+    font-size: 0.95rem;
+  }
+  
+  .gpio-status {
+    font-size: 0.6rem;
+  }
+}

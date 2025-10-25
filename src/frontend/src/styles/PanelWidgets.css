@@ -1,0 +1,325 @@
+.dashboard-config-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.config-alert {
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  color: var(--text-secondary);
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.config-alert::before {
+  content: '\\f071';
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--warning-color);
+}
+
+.panel-widgets {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--dark-bg);
+  min-height: calc(100vh - 4rem);
+}
+
+.panel-widgets h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.panel-widgets h3 i {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.panel-widgets h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin: 1.2rem 0 0.8rem 0;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.panel-widgets h4 i {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+}
+
+/* Grid Layout */
+.widgets-config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Panel de Control */
+.control-panel {
+  background: var(--surface-section);
+  border-radius: 0.4rem;
+  padding: 1.2rem;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Selector de agrupación */
+.agrupacion-select {
+  min-width: 200px;
+  padding: 0.6rem;
+  background: var(--surface-ground);
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  border-radius: 0.3rem;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.agrupacion-select:hover {
+  border-color: var(--primary-color);
+}
+
+.agrupacion-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+  outline: none;
+}
+
+/* Listas de elementos */
+.widgets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.widget-item {
+  background: var(--surface-section);
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.widget-item:hover {
+  background: rgba(96, 165, 250, 0.05);
+  transform: translateY(-1px);
+}
+
+.widget-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.widget-icon {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.widget-name {
+  color: var(--text-color);
+}
+
+.widget-type {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* Botones de acción */
+.widget-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn-widget {
+  background: transparent;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  color: var(--text-secondary);
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.btn-widget:hover {
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-widget.add {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-widget.add:hover {
+  background: var(--primary-color-darker);
+}
+
+.btn-widget.remove {
+  color: var(--danger-color);
+}
+
+.btn-widget.remove:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--danger-color);
+}
+
+.btn-widget.favorite.active {
+  color: var(--warning-color);
+}
+
+/* Botones de control */
+.panel-widgets li button.btn-mover {
+  background: var(--surface-ground);
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.panel-widgets li button.btn-favorito {
+  background: transparent;
+  color: gold;
+  font-size: 1.2em;
+}
+
+.panel-widgets li button.btn-quitar {
+  background: var(--red-500);
+  color: white;
+}
+
+/* Widget configurado y Dashboard Preview */
+.dashboard-preview {
+  background: var(--surface-section);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+}
+
+.preview-title {
+  margin-bottom: 1.5rem;
+}
+
+.widget-configurado {
+  background: var(--surface-ground);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  transition: all 0.2s ease;
+}
+
+.widget-configurado:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary-color);
+}
+
+.widget-info {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.widget-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* Botón guardar */
+.btn-save {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  margin-top: 1.5rem;
+}
+
+.btn-save:hover {
+  background: var(--primary-color-darker);
+  transform: translateY(-1px);
+}
+
+.btn-save i {
+  font-size: 0.9rem;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+  .widgets-config-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .control-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .agrupacion-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .panel-widgets {
+    padding: 1rem;
+  }
+
+  .widget-configurado {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .widget-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .btn-save {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,135 @@
+.config-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.config-section {
+  background: var(--surface-card);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.config-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color-secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--surface-border);
+  border-radius: 4px;
+  background: var(--surface-section);
+  color: var(--text-color);
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.btn-guardar,
+.btn-backup {
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-guardar:hover,
+.btn-backup:hover {
+  background: var(--primary-color-darker);
+}
+
+.btn-guardar:disabled {
+  background: var(--surface-500);
+  cursor: not-allowed;
+}
+
+.backup-info {
+  background: var(--surface-section);
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.backup-info p {
+  margin: 5px 0;
+  color: var(--text-color-secondary);
+}
+
+.backup-list {
+  margin-top: 20px;
+}
+
+.backup-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.backup-list th,
+.backup-list td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.backup-list th {
+  font-weight: bold;
+  background: var(--surface-ground);
+}
+
+.backup-list button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.backup-list button:hover {
+  background: var(--primary-color-darker);
+}
+
+@media (max-width: 768px) {
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .config-section {
+    margin-bottom: 20px;
+  }
+  
+  .backup-list {
+    overflow-x: auto;
+  }
+}

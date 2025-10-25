@@ -1,0 +1,268 @@
+/* Estilos para la página de Usuarios - Compacto */
+.usuarios-page {
+  padding: 0.5rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.btn-agregar {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-agregar:hover {
+  background: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.usuarios-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.usuarios-tabla {
+  background: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+}
+
+.usuarios-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usuarios-tabla th,
+.usuarios-tabla td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.usuarios-tabla th {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.usuarios-tabla tbody tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.rol-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.rol-badge.administrador {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.rol-badge.usuario {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.rol-badge.operador {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.estado-toggle {
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.estado-toggle.activo {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+.estado-toggle.inactivo {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-right: 0.3rem;
+  transition: all 0.2s;
+}
+
+.btn-editar {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.btn-editar:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.btn-eliminar {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.btn-eliminar:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-usuario {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-usuario h3 {
+  margin: 0 0 1rem 0;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 0.8rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--dark-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.form-acciones {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-guardar,
+.btn-cancelar {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-guardar {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-guardar:hover {
+  background: var(--accent-color);
+}
+
+.btn-cancelar {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-cancelar:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
