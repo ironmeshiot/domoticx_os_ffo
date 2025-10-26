@@ -6,12 +6,9 @@ import React, { useState, useEffect } from 'react';
 // import MuiAlert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
-import Drawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import NodoConfig from './NodoConfig';
@@ -257,31 +254,24 @@ function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, 
           </div>
         </div>
       )}
-      {/* Edición en Drawer para evitar problemas de posicionamiento y stacking */}
-      <Drawer
-        anchor="right"
-        open={Boolean(nodoEditando)}
-        onClose={() => setNodoEditando(null)}
-        PaperProps={{ sx: { width: { xs: '100%', sm: 520, md: 480 } } }}
-      >
-        <Box sx={{ width: { xs: '100%', sm: 520, md: 480 }, p: 0, display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2, borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
-            <Typography variant="h6">Editar Nodo</Typography>
-            <IconButton aria-label="Cerrar editor" onClick={() => setNodoEditando(null)} size="small">
-              <CloseRoundedIcon />
-            </IconButton>
-          </Box>
-          <Box sx={{ p: 2, overflow: 'auto', flex: 1 }}>
-            {nodoEditando && (
-              <NodoConfig
-                nodo={nodoEditando}
-                onGuardar={guardarConfigNodo}
-                onCancelar={() => setNodoEditando(null)}
-              />
-            )}
-          </Box>
-        </Box>
-      </Drawer>
+      {/* Edición en Dialog centrado */}
+      <Dialog open={Boolean(nodoEditando)} onClose={() => setNodoEditando(null)} fullWidth maxWidth="md">
+        <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span>Editar Nodo</span>
+          <IconButton aria-label="Cerrar editor" onClick={() => setNodoEditando(null)} size="small">
+            <CloseRoundedIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers sx={{ p: { xs: 1, sm: 2 } }}>
+          {nodoEditando && (
+            <NodoConfig
+              nodo={nodoEditando}
+              onGuardar={guardarConfigNodo}
+              onCancelar={() => setNodoEditando(null)}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
       
       {/* Modal de selección de tipo de firmware (MUI Dialog) */}
       <Dialog open={Boolean(modalFirmware)} onClose={() => setModalFirmware(null)} fullWidth maxWidth="sm">
