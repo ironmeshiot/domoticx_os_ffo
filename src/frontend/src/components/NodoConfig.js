@@ -87,6 +87,7 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ 
         position: 'relative',
+        zIndex: 100,
         mt: 3,
         mb: 3,
         clear: 'both'
@@ -165,7 +166,7 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                     required
                     value={formulario.tipo}
                     onChange={(e) => manejarCambio('tipo', e.target.value)}
-                    SelectProps={{ MenuProps: { container: typeof document !== 'undefined' ? document.body : undefined } }}
+                    SelectProps={{ native: true }}
                     sx={fieldStyle}
                   >
                     <option value="">Seleccionar tipo</option>
@@ -196,7 +197,7 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                     fullWidth
                     value={formulario.estado}
                     onChange={(e) => manejarCambio('estado', e.target.value)}
-                    SelectProps={{ MenuProps: { container: typeof document !== 'undefined' ? document.body : undefined } }}
+                    SelectProps={{ native: true }}
                     sx={fieldStyle}
                   >
                     <option value="online">Online</option>
@@ -276,9 +277,8 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                     variant="outlined"
                     value={formulario.failover || ''}
                     onChange={(e) => manejarCambio('failover', e.target.value)}
+                    SelectProps={{ native: true }}
                     sx={fieldStyle}
-                    InputLabelProps={{ shrink: true }}
-                    SelectProps={{ MenuProps: { container: typeof document !== 'undefined' ? document.body : undefined } }}
                   >
                     <option value="">Seleccionar modo de red</option>
                     <option value="wifi">WiFi</option>
@@ -317,7 +317,7 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                         fullWidth
                         value={formulario.tipoIP || 'dhcp'}
                         onChange={e => manejarCambio('tipoIP', e.target.value)}
-                        SelectProps={{ MenuProps: { container: typeof document !== 'undefined' ? document.body : undefined } }}
+                        SelectProps={{ native: true }}
                         sx={fieldStyle}
                       >
                         <option value="dhcp">DHCP (automática)</option>
