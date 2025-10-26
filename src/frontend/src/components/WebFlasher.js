@@ -167,7 +167,14 @@ const WebFlasher = ({ open, onClose, nodo, firmwareBinario }) => {
         addLog('¡Conectado al dispositivo ESP32!', 'success');
       }
 
-      // Detectar información del chip
+      // Detectar información del chip (si la función existe)
+      try {
+        if (typeof detectChipInfo === 'function') {
+          await detectChipInfo();
+        }
+      } catch (err) {
+        console.warn('detectChipInfo falló:', err);
+      }
 
     } catch (error) {
       console.error('Error conectando:', error);
