@@ -277,8 +277,9 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                     variant="outlined"
                     value={formulario.failover || ''}
                     onChange={(e) => manejarCambio('failover', e.target.value)}
-                    SelectProps={{ native: true }}
                     sx={fieldStyle}
+                    InputLabelProps={{ shrink: true }}
+                    SelectProps={{ native: true }}
                   >
                     <option value="">Seleccionar modo de red</option>
                     <option value="wifi">WiFi</option>
