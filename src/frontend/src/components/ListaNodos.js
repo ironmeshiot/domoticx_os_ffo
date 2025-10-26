@@ -11,7 +11,18 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import NodoConfig from './NodoConfig';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import TextField from '@mui/material/TextField';
 import { getNodes, getNodeById, deleteNode, updateNode } from '../services/nodeService';
 
 function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, mostrarSnackbar }) {
@@ -253,143 +264,46 @@ function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, 
         onClose={() => setNodoEditando(null)}
         PaperProps={{ sx: { width: { xs: '100%', sm: 520, md: 480 } } }}
       >
-        <Box sx={{ width: { xs: '100%', sm: 520, md: 480 }, p: 2 }}>
-          {nodoEditando && (
-            <NodoConfig
-              nodo={nodoEditando}
-              onGuardar={guardarConfigNodo}
-              onCancelar={() => setNodoEditando(null)}
-            />
-          )}
+        <Box sx={{ width: { xs: '100%', sm: 520, md: 480 }, p: 0, display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 2, borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
+            <Typography variant="h6">Editar Nodo</Typography>
+            <IconButton aria-label="Cerrar editor" onClick={() => setNodoEditando(null)} size="small">
+              <CloseRoundedIcon />
+            </IconButton>
+          </Box>
+          <Box sx={{ p: 2, overflow: 'auto', flex: 1 }}>
+            {nodoEditando && (
+              <NodoConfig
+                nodo={nodoEditando}
+                onGuardar={guardarConfigNodo}
+                onCancelar={() => setNodoEditando(null)}
+              />
+            )}
+          </Box>
         </Box>
       </Drawer>
       
-      {/* Modal de selección de tipo de firmware */}
-      {modalFirmware && (
-        <div className="modal-overlay" onClick={() => setModalFirmware(null)}>
-          <div className="modal-form" onClick={(e) => e.stopPropagation()} style={{maxWidth: '500px'}}>
-            <h3 style={{marginTop:0, display:'flex', alignItems:'center', gap:'8px'}}>
-              <span>📥</span>
-              Generar Firmware para {modalFirmware.nombre}
-            </h3>
-            
-            <div style={{marginBottom: '1.5rem'}}>
-              <label style={{display:'block', marginBottom:'0.5rem', fontWeight:'bold'}}>
-                Tipo de Firmware:
-              </label>
-              
-              <div style={{display:'flex', flexDirection:'column', gap:'0.75rem'}}>
-                <label style={{
-                  display:'flex',
-                  alignItems:'flex-start',
-                  gap:'0.5rem',
-                  padding:'0.75rem',
-                  border: tipoFirmware === 'basic' ? '2px solid #60a5fa' : '1px solid rgba(255,255,255,0.1)',
-                  borderRadius:'6px',
-                  cursor:'pointer',
-                  background: tipoFirmware === 'basic' ? 'rgba(96,165,250,0.1)' : 'transparent'
-                }}>
-                  <input
-                    type="radio"
-                    name="tipoFirmware"
-                    value="basic"
-                    checked={tipoFirmware === 'basic'}
-                    onChange={(e) => setTipoFirmware(e.target.value)}
-                    style={{marginTop:'3px'}}
-                  />
-                  <div>
-                    <div style={{fontWeight:'bold'}}>🔧 Firmware Básico</div>
-                    <div style={{fontSize:'0.85rem', color:'var(--text-secondary)', marginTop:'4px'}}>
-                      Ideal para desarrollo y pruebas. Incluye WiFi, lectura de sensores y comunicación HTTP.
-                    </div>
-                  </div>
-                </label>
-                
-                <label style={{
-                  display:'flex',
-                  alignItems:'flex-start',
-                  gap:'0.5rem',
-                  padding:'0.75rem',
-                  border: tipoFirmware === 'ota' ? '2px solid #60a5fa' : '1px solid rgba(255,255,255,0.1)',
-                  borderRadius:'6px',
-                  cursor:'pointer',
-                  background: tipoFirmware === 'ota' ? 'rgba(96,165,250,0.1)' : 'transparent'
-                }}>
-                  <input
-                    type="radio"
-                    name="tipoFirmware"
-                    value="ota"
-                    checked={tipoFirmware === 'ota'}
-                    onChange={(e) => setTipoFirmware(e.target.value)}
-                    style={{marginTop:'3px'}}
-                  />
-                  <div>
-                    <div style={{fontWeight:'bold'}}>🚀 Firmware con OTA</div>
-                    <div style={{fontSize:'0.85rem', color:'var(--text-secondary)', marginTop:'4px'}}>
-                      Para producción. Permite actualizaciones remotas sin cable USB. Incluye ArduinoOTA y actualización HTTP.
-                    </div>
-                  </div>
-                </label>
-              </div>
-            </div>
-            
-            {tipoFirmware === 'ota' && (
-              <div style={{marginBottom: '1.5rem'}}>
-                <label style={{display:'block', marginBottom:'0.5rem', fontWeight:'bold'}}>
-                  IP del Servidor:
-                </label>
-                <input
-                  type="text"
-                  value={serverIP}
-                  onChange={(e) => setServerIP(e.target.value)}
-                  placeholder="192.168.1.100"
-                  style={{
-                    width:'100%',
-                    padding:'0.5rem',
-                    border:'1px solid rgba(255,255,255,0.1)',
-                    borderRadius:'4px',
-                    background:'rgba(0,0,0,0.2)',
-                    color:'white'
-                  }}
-                />
-                <div style={{fontSize:'0.8rem', color:'var(--text-secondary)', marginTop:'4px'}}>
-                  IP donde el ESP32 buscará actualizaciones OTA
-                </div>
-              </div>
-            )}
-            
-            <div style={{display:'flex', gap:'0.5rem', justifyContent:'flex-end'}}>
-              <button 
-                onClick={() => setModalFirmware(null)}
-                style={{
-                  padding:'0.5rem 1rem',
-                  background:'transparent',
-                  border:'1px solid rgba(255,255,255,0.2)',
-                  borderRadius:'4px',
-                  color:'white',
-                  cursor:'pointer'
-                }}
-              >
-                Cancelar
-              </button>
-              <button 
-                onClick={() => descargarFirmware(modalFirmware, tipoFirmware, serverIP)}
-                style={{
-                  padding:'0.5rem 1rem',
-                  background:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  border:'none',
-                  borderRadius:'4px',
-                  color:'white',
-                  cursor:'pointer',
-                  fontWeight:'bold'
-                }}
-              >
-                📥 Descargar Firmware
-              </button>
+      {/* Modal de selección de tipo de firmware (MUI Dialog) */}
+      <Dialog open={Boolean(modalFirmware)} onClose={() => setModalFirmware(null)} fullWidth maxWidth="sm">
+        <DialogTitle>📥 Generar Firmware {modalFirmware ? `para ${modalFirmware.nombre}` : ''}</DialogTitle>
+        <DialogContent dividers>
+          <div style={{marginBottom: '1rem'}}>
+            <div style={{display:'flex', flexDirection:'column', gap:8}}>
+              <RadioGroup value={tipoFirmware} onChange={(e) => setTipoFirmware(e.target.value)}>
+                <FormControlLabel value="basic" control={<Radio />} label={<div><strong>🔧 Firmware Básico</strong><div style={{fontSize:'0.85rem', color:'var(--text-secondary)'}}>Ideal para desarrollo y pruebas. Incluye WiFi, lectura de sensores y comunicación HTTP.</div></div>} />
+                <FormControlLabel value="ota" control={<Radio />} label={<div><strong>🚀 Firmware con OTA</strong><div style={{fontSize:'0.85rem', color:'var(--text-secondary)'}}>Permite actualizaciones remotas sin cable USB. Incluye ArduinoOTA y actualización HTTP.</div></div>} />
+              </RadioGroup>
             </div>
           </div>
-        </div>
-      )}
+          {tipoFirmware === 'ota' && (
+            <TextField label="IP del Servidor" fullWidth value={serverIP} onChange={(e) => setServerIP(e.target.value)} placeholder="192.168.1.100" sx={{mt:1}} />
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setModalFirmware(null)} variant="outlined">Cancelar</Button>
+          <Button onClick={() => descargarFirmware(modalFirmware, tipoFirmware, serverIP)} variant="contained">📥 Descargar Firmware</Button>
+        </DialogActions>
+      </Dialog>
       
       {/* Formulario de alta de nodo removido. Solo se listan los nodos y sus acciones. */}
     </div>
