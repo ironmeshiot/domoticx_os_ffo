@@ -1,4 +1,4 @@
-# DomoticX OS FFO - Sistema de Automatización del Hogar
+# DomoticX OS Full Failover - Sistema de Automatización
 
 ## Estructura del Proyecto
 Un vistazo a la arquitectura de nuestro sistema de automatización del hogar de última generación:

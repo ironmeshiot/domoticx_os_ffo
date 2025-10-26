@@ -1,83 +1,83 @@
 # DomoticX OS FFO - Estructura de Directorios
 
 ```
-Domoticx_OS_FFO/
-├── src/                        # Directorio raíz del código fuente
-│   ├── server/                # Código del servidor
-│   │   ├── core/             # Funcionalidad central del servidor
-│   │   │   ├── auth/        # Autenticación y autorización
-│   │   │   ├── config/      # Manejadores de configuración
+Domoticx_OS_FFO ( Full Failover)
+├── src/                    # Directorio raíz del código fuente
+│   ├── server/             # Código del servidor
+│   │   ├── core/           # Funcionalidad central del servidor
+│   │   │   ├── auth/       # Autenticación y autorización
+│   │   │   ├── config/     # Manejadores de configuración
 │   │   │   └── middleware/  # Middleware de Express
 │   │   ├── api/             # Rutas y controladores API
-│   │   │   ├── v1/         # Endpoints API versión 1
-│   │   │   └── middleware/ # Middleware específico de API
+│   │   │   ├── v1/          # Endpoints API versión 1
+│   │   │   └── middleware/  # Middleware específico de API
 │   │   ├── services/        # Lógica de negocio y servicios
-│   │   └── utils/          # Funciones y utilidades
+│   │   └── utils/           # Funciones y utilidades
 │   │
 │   ├── hardware/            # Integración y gestión de hardware
-│   │   ├── drivers/        # Controladores específicos de dispositivos
-│   │   ├── mesh/          # Implementación de red mesh
-│   │   │   ├── wifi/      # Red mesh WiFi
-│   │   │   ├── espnow/    # Implementación protocolo ESP-NOW
-│   │   │   └── lora/      # Comunicación LoRa
-│   │   ├── sensors/       # Gestión de sensores
-│   │   └── controllers/   # Controladores de hardware
+│   │   ├── drivers/         # Controladores específicos de dispositivos
+│   │   ├── mesh/            # Implementación de red mesh
+│   │   │   ├── wifi/        # Red mesh WiFi
+│   │   │   ├── espnow/      # Implementación protocolo ESP-NOW
+│   │   │   └── lora/        # Comunicación LoRa
+│   │   ├── sensors/         # Gestión de sensores
+│   │   └── controllers/     # Controladores de hardware
 │   │
-│   ├── frontend/           # Aplicación frontend
-│   │   ├── components/    # Componentes React/Vue
-│   │   ├── pages/        # Componentes de página
-│   │   ├── assets/       # Recursos estáticos
-│   │   │   ├── images/   # Imágenes
-│   │   │   └── styles/   # Archivos CSS/SCSS
-│   │   ├── services/     # Servicios frontend
-│   │   └── utils/        # Utilidades frontend
+│   ├── frontend/            # Aplicación frontend
+│   │   ├── components/      # Componentes React/Vue
+│   │   ├── pages/           # Componentes de página
+│   │   ├── assets/          # Recursos estáticos
+│   │   │   ├── images/      # Imágenes
+│   │   │   └── styles/      # Archivos CSS/SCSS
+│   │   ├── services/        # Servicios frontend
+│   │   └── utils/           # Utilidades frontend
 │   │
-│   ├── ai_assistant/      # Integración de IA
-│   │   ├── core/         # Funcionalidad central de IA
-│   │   ├── models/       # Modelos de IA y entrenamiento
-│   │   ├── nlp/         # Procesamiento de lenguaje natural
-│   │   └── services/     # Servicios de IA
+│   ├── ai_assistant/        # Integración de IA
+│   │   ├── core/            # Funcionalidad central de IA
+│   │   ├── models/          # Modelos de IA y entrenamiento
+│   │   ├── nlp/             # Procesamiento de lenguaje natural
+│   │   └── services/        # Servicios de IA
 │   │
-│   └── database/         # Gestión de base de datos
-│       ├── migrations/   # Migraciones de base de datos
-│       ├── models/       # Modelos de datos
-│       └── seeds/        # Datos de inicialización
+│   └── database/            # Gestión de base de datos
+│       ├── migrations/      # Migraciones de base de datos
+│       ├── models/          # Modelos de datos
+│       └── seeds/           # Datos de inicialización
 │
-├── docs/                  # Documentación
-│   ├── technical/        # Documentación técnica
-│   │   ├── architecture/  # Arquitectura del sistema
-│   │   ├── api/          # Documentación API
-│   │   └── deployment/   # Guías de implementación
-│   ├── user/            # Documentación de usuario
-│   │   ├── guides/      # Guías de usuario
-│   │   └── tutorials/   # Tutoriales
-│   ├── api/             # Documentación API
-│   │   ├── v1/         # Docs API versión 1
-│   │   └── examples/   # Ejemplos de uso API
-│   └── hardware/        # Documentación de hardware
-│       ├── setup/      # Guías de configuración
-│       └── diagrams/   # Diagramas de hardware
+├── docs/                    # Documentación
+│   ├── technical/           # Documentación técnica
+│   │   ├── architecture/    # Arquitectura del sistema
+│   │   ├── api/             # Documentación API
+│   │   └── deployment/      # Guías de implementación
+│   ├── user/                # Documentación de usuario
+│   │   ├── guides/          # Guías de usuario
+│   │   └── tutorials/       # Tutoriales
+│   ├── api/                 # Documentación API
+│   │   ├── v1/              # Docs API versión 1
+│   │   └── examples/        # Ejemplos de uso API
+│   └── hardware/            # Documentación de hardware
+│       ├── setup/           # Guías de configuración
+│       └── diagrams/        # Diagramas de hardware
 │
-├── config/              # Archivos de configuración
-│   ├── default/        # Configuraciones por defecto
-│   ├── development/    # Entorno de desarrollo
-│   ├── production/     # Entorno de producción
-│   └── test/          # Entorno de pruebas
+├── config/                  # Archivos de configuración
+│   ├── default/             # Configuraciones por defecto
+│   ├── development/         # Entorno de desarrollo
+│   ├── production/          # Entorno de producción
+│   └── test/                # Entorno de pruebas
 │
-├── tests/              # Pruebas
-│   ├── unit/          # Pruebas unitarias
-│   ├── integration/   # Pruebas de integración
-│   ├── e2e/          # Pruebas end-to-end
-│   └── fixtures/      # Datos de prueba
+├── tests/                   # Pruebas
+│   ├── unit/                # Pruebas unitarias
+│   ├── integration/         # Pruebas de integración
+│   ├── e2e/                 # Pruebas end-to-end
+│   └── fixtures/            # Datos de prueba
 │
-├── scripts/           # Scripts de utilidad
-│   ├── setup/        # Scripts de configuración
-│   ├── deploy/       # Scripts de implementación
-│   └── maintenance/  # Scripts de mantenimiento
+├── scripts/                 # Scripts de utilidad
+│   ├── setup/               # Scripts de configuración
+│   ├── deploy/              # Scripts de implementación
+│   └── maintenance/         # Scripts de mantenimiento
 │
-└── tools/            # Herramientas de desarrollo
-    ├── generators/   # Generadores de código
-    └── debugging/    # Herramientas de depuración
+└── tools/                   # Herramientas de desarrollo
+    ├── generators/          # Generadores de código
+    └── debugging/           # Herramientas de depuración
 ```
 
 ## Descripción de Directorios

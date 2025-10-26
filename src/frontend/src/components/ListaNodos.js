@@ -5,6 +5,12 @@ import React, { useState, useEffect } from 'react';
 // import Snackbar from '@mui/material/Snackbar';
 // import MuiAlert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import Drawer from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import NodoConfig from './NodoConfig';
 import { getNodes, getNodeById, deleteNode, updateNode } from '../services/nodeService';
 
@@ -162,74 +168,48 @@ function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, 
       )}
       
       {!nodoEditando && nodos.length > 0 && (
-        <ul>
+        <List>
           {nodos.map(nodo => (
-            <li key={nodo.id}>
-              <strong>{nodo.nombre}</strong> ({nodo.tipo}) - {nodo.ubicacion}
-              <div className="nodo-metadata">
-                {nodo.macAddress && <span>MAC: {nodo.macAddress}</span>}
-                {nodo.ipAddress && <span>IP: {nodo.ipAddress}</span>}
-                {nodo.firmwareVersion && <span>FW: {nodo.firmwareVersion}</span>}
-                {nodo.estado && <span className={`nodo-estado ${nodo.estado}`}>{nodo.estado}</span>}
+            <ListItem key={nodo.id} divider alignItems="flex-start">
+              <ListItemText
+                primary={<>
+                  <strong style={{marginRight:8}}>{nodo.nombre}</strong>
+                  <span style={{color:'#94a3b8', marginLeft:6}}>{nodo.tipo} — {nodo.ubicacion}</span>
+                </>}
+                secondary={
+                  <>
+                    <div className="nodo-metadata" style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:6}}>
+                      {nodo.macAddress && <span>MAC: {nodo.macAddress}</span>}
+                      {nodo.ipAddress && <span>IP: {nodo.ipAddress}</span>}
+                      {nodo.firmwareVersion && <span>FW: {nodo.firmwareVersion}</span>}
+                      {nodo.estado && (
+                        <Chip label={nodo.estado} size="small" color={nodo.estado === 'online' ? 'success' : nodo.estado === 'error' ? 'error' : 'default'} />
+                      )}
+                    </div>
+                    {nodo.descripcion && (
+                      <p className="nodo-descripcion" style={{margin:'8px 0 0 0'}}>{nodo.descripcion}</p>
+                    )}
+                    {Array.isArray(nodo.tags) && nodo.tags.length > 0 && (
+                      <div className="nodo-tags" style={{marginTop:8}}>
+                        {nodo.tags.map((tag) => (
+                          <Chip key={tag} label={tag} size="small" variant="outlined" style={{marginRight:6,marginBottom:6}} />
+                        ))}
+                      </div>
+                    )}
+                  </>
+                }
+              />
+              <div className="nodo-acciones" style={{display:'flex',gap:8,marginLeft:12}}>
+                <Button size="small" variant="outlined" color="error" onClick={() => eliminarNodo(nodo.id)}>Eliminar</Button>
+                <Button size="small" variant="contained" onClick={() => editarNodo(nodo)}>Editar</Button>
+                <Button size="small" onClick={() => onGestionarDispositivos && onGestionarDispositivos(nodo)}>Gestionar</Button>
+                <Button size="small" onClick={() => abrirModalFirmware(nodo)}>📥 Firmware</Button>
+                <Button size="small" onClick={() => { if (onFlashearNodo) onFlashearNodo(nodo); else if (mostrarSnackbar) mostrarSnackbar('Función onFlashearNodo no definida','error'); }}>⚡ Flashear</Button>
+                <Button size="small" onClick={() => { if (onMonitorSerial) onMonitorSerial(); else if (mostrarSnackbar) mostrarSnackbar('Función onMonitorSerial no definida','error'); }}>📺 Monitor</Button>
               </div>
-              {nodo.descripcion && (
-                <p className="nodo-descripcion">{nodo.descripcion}</p>
-              )}
-              {Array.isArray(nodo.tags) && nodo.tags.length > 0 && (
-                <div className="nodo-tags">
-                  {nodo.tags.map((tag) => (
-                    <span key={tag} className="tag chip">{tag}</span>
-                  ))}
-                </div>
-              )}
-              <div className="nodo-acciones">
-                <button onClick={() => eliminarNodo(nodo.id)}>Eliminar</button>
-                <button onClick={() => editarNodo(nodo)}>Editar</button>
-                <button 
-                  onClick={() => onGestionarDispositivos && onGestionarDispositivos(nodo)}
-                  className="btn-gestionar"
-                >
-                  Gestionar Dispositivos
-                </button>
-                <button 
-                  onClick={() => abrirModalFirmware(nodo)}
-                  className="btn-firmware"
-                  title="Descargar firmware .ino para ESP32"
-                >
-                  📥 Firmware ESP32
-                </button>
-                <button
-                  onClick={() => {
-                    console.log('Botón flashear clickeado', nodo, onFlashearNodo);
-                    if (onFlashearNodo) {
-                      onFlashearNodo(nodo);
-                    } else {
-                      if (mostrarSnackbar) mostrarSnackbar('Función onFlashearNodo no definida', 'error');
-                    }
-                  }}
-                  className="btn-flashear"
-                  title="Flashear dispositivo ESP32 via USB"
-                >
-                  ⚡ Flashear ESP32
-                </button>
-                
-                <button
-                  onClick={() => {
-                    if (onMonitorSerial) {
-                      onMonitorSerial();
-                    } else {
-                      if (mostrarSnackbar) mostrarSnackbar('Función onMonitorSerial no definida', 'error');
-                    }
-                  }}
-                  className="btn-monitor"
-                  title="Abrir monitor serial para comunicación directa"
-                >
-                  📺 Monitor Serial
-                </button>
-              </div>
-            </li>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       )}
 
       {/* Popup de confirmación para eliminar nodo, centrado en pantalla */}
@@ -266,13 +246,18 @@ function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, 
           </div>
         </div>
       )}
-      {nodoEditando && (
-        <NodoConfig
-          nodo={nodoEditando}
-          onGuardar={guardarConfigNodo}
-          onCancelar={() => setNodoEditando(null)}
-        />
-      )}
+      {/* Edición en Drawer para evitar problemas de posicionamiento y stacking */}
+      <Drawer anchor="right" open={Boolean(nodoEditando)} onClose={() => setNodoEditando(null)}>
+        <Box sx={{ width: 520, p: 2 }}>
+          {nodoEditando && (
+            <NodoConfig
+              nodo={nodoEditando}
+              onGuardar={guardarConfigNodo}
+              onCancelar={() => setNodoEditando(null)}
+            />
+          )}
+        </Box>
+      </Drawer>
       
       {/* Modal de selección de tipo de firmware */}
       {modalFirmware && (
