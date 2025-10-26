@@ -199,7 +199,7 @@ function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, 
                   </>
                 }
               />
-              <div className="nodo-acciones" style={{display:'flex',gap:8,marginLeft:12}}>
+              <div className="nodo-acciones" style={{display:'flex',gap:8,marginLeft:12,flexWrap:'wrap'}}>
                 <Button size="small" variant="outlined" color="error" onClick={() => eliminarNodo(nodo.id)}>Eliminar</Button>
                 <Button size="small" variant="contained" onClick={() => editarNodo(nodo)}>Editar</Button>
                 <Button size="small" onClick={() => onGestionarDispositivos && onGestionarDispositivos(nodo)}>Gestionar</Button>
@@ -247,8 +247,13 @@ function ListaNodos({ onGestionarDispositivos, onFlashearNodo, onMonitorSerial, 
         </div>
       )}
       {/* Edición en Drawer para evitar problemas de posicionamiento y stacking */}
-      <Drawer anchor="right" open={Boolean(nodoEditando)} onClose={() => setNodoEditando(null)}>
-        <Box sx={{ width: 520, p: 2 }}>
+      <Drawer
+        anchor="right"
+        open={Boolean(nodoEditando)}
+        onClose={() => setNodoEditando(null)}
+        PaperProps={{ sx: { width: { xs: '100%', sm: 520, md: 480 } } }}
+      >
+        <Box sx={{ width: { xs: '100%', sm: 520, md: 480 }, p: 2 }}>
           {nodoEditando && (
             <NodoConfig
               nodo={nodoEditando}
