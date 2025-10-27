@@ -107,7 +107,7 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
     };
 
     cargarAsignaciones();
-  }, [nodoId]);
+  }, [nodoId, gpioSensores, gpioActuadores, gpioLibres]);
 
   // Función para abrir modal al hacer clic en un GPIO
   const handleGPIOClick = async (gpio) => {
