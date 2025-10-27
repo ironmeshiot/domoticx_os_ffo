@@ -311,12 +311,27 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
 
   // Obtener asignación para un GPIO específico
   const obtenerAsignacionGPIO = (gpio) => {
-    const sensor = asignaciones.sensores.find(s => s.pin === gpio || s.pin === String(gpio));
+    // Normalize pin values from backend which may store 'D2', 'GPIO2' or numeric '2'
+    const normalizePin = (pin) => {
+      if (pin === null || pin === undefined) return null;
+      const asStr = String(pin).trim();
+      const digits = asStr.match(/\d+/);
+      return digits ? Number(digits[0]) : (asStr === '' ? null : asStr);
+    };
+
+    const target = Number(gpio);
+    const sensor = asignaciones.sensores.find(s => {
+      const p = normalizePin(s.pin);
+      return p === target || String(s.pin) === String(gpio) || s.pin === gpio;
+    });
     if (sensor) return { tipo: 'sensor', ...sensor };
-    
-    const actuador = asignaciones.actuadores.find(a => a.pin === gpio || a.pin === String(gpio));
+
+    const actuador = asignaciones.actuadores.find(a => {
+      const p = normalizePin(a.pin);
+      return p === target || String(a.pin) === String(gpio) || a.pin === gpio;
+    });
     if (actuador) return { tipo: 'actuador', ...actuador };
-    
+
     return null;
   };
 
