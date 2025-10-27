@@ -158,24 +158,40 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <TextField 
-                    select
-                    label="Tipo / Plataforma" 
-                    variant="outlined" 
-                    fullWidth 
-                    required
-                    value={formulario.tipo}
-                    onChange={(e) => manejarCambio('tipo', e.target.value)}
-                    SelectProps={{ native: true }}
-                    sx={fieldStyle}
-                  >
-                    <option value="">Seleccionar tipo</option>
-                    <option value="ESP32">ESP32</option>
-                    <option value="ESP8266">ESP8266</option>
-                    <option value="ESPHome">ESPHome</option>
-                    <option value="Modbus">Modbus RTU/TCP</option>
-                    <option value="Otro">Otro</option>
-                  </TextField>
+                  <div style={{ marginBottom: '16px', width: '100%' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      color: '#d0d0d0', 
+                      marginBottom: '8px',
+                      fontSize: '16px',
+                      fontWeight: 400
+                    }}>
+                      Tipo / Plataforma *
+                    </label>
+                    <select
+                      value={formulario.tipo}
+                      onChange={(e) => manejarCambio('tipo', e.target.value)}
+                      required
+                      style={{
+                        width: '100%',
+                        padding: '12px 14px',
+                        backgroundColor: '#1a1f2e',
+                        color: '#f5f5f5',
+                        border: '1px solid #394150',
+                        borderRadius: '4px',
+                        fontSize: '16px',
+                        outline: 'none',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <option value="" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Seleccionar tipo</option>
+                      <option value="ESP32" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>ESP32</option>
+                      <option value="ESP8266" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>ESP8266</option>
+                      <option value="ESPHome" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>ESPHome</option>
+                      <option value="Modbus" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Modbus RTU/TCP</option>
+                      <option value="Otro" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Otro</option>
+                    </select>
+                  </div>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <TextField 
@@ -190,21 +206,37 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <TextField 
-                    select
-                    label="Estado actual" 
-                    variant="outlined" 
-                    fullWidth
-                    value={formulario.estado}
-                    onChange={(e) => manejarCambio('estado', e.target.value)}
-                    SelectProps={{ native: true }}
-                    sx={fieldStyle}
-                  >
-                    <option value="online">Online</option>
-                    <option value="offline">Offline</option>
-                    <option value="error">Error</option>
-                    <option value="mantenimiento">Mantenimiento</option>
-                  </TextField>
+                  <div style={{ marginBottom: '16px', width: '100%' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      color: '#d0d0d0', 
+                      marginBottom: '8px',
+                      fontSize: '16px',
+                      fontWeight: 400
+                    }}>
+                      Estado actual
+                    </label>
+                    <select
+                      value={formulario.estado}
+                      onChange={(e) => manejarCambio('estado', e.target.value)}
+                      style={{
+                        width: '100%',
+                        padding: '12px 14px',
+                        backgroundColor: '#1a1f2e',
+                        color: '#f5f5f5',
+                        border: '1px solid #394150',
+                        borderRadius: '4px',
+                        fontSize: '16px',
+                        outline: 'none',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <option value="online" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Online</option>
+                      <option value="offline" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Offline</option>
+                      <option value="error" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Error</option>
+                      <option value="mantenimiento" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Mantenimiento</option>
+                    </select>
+                  </div>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <TextField 
@@ -270,21 +302,37 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
             {tabIdx === 1 && (
               <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
-                  <TextField
-                    select
-                    fullWidth
-                    label="Modo de Red"
-                    variant="outlined"
-                    value={formulario.failover || ''}
-                    onChange={(e) => manejarCambio('failover', e.target.value)}
-                    SelectProps={{ native: true }}
-                    sx={fieldStyle}
-                  >
-                    <option value="">Seleccionar modo de red</option>
-                    <option value="wifi">WiFi</option>
-                    <option value="espnow">ESP-NOW</option>
-                    <option value="lora">LoRa</option>
-                  </TextField>
+                  <div style={{ marginBottom: '16px', width: '100%' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      color: '#d0d0d0', 
+                      marginBottom: '8px',
+                      fontSize: '16px',
+                      fontWeight: 400
+                    }}>
+                      Modo de Red
+                    </label>
+                    <select
+                      value={formulario.failover || ''}
+                      onChange={(e) => manejarCambio('failover', e.target.value)}
+                      style={{
+                        width: '100%',
+                        padding: '12px 14px',
+                        backgroundColor: '#1a1f2e',
+                        color: '#f5f5f5',
+                        border: '1px solid #394150',
+                        borderRadius: '4px',
+                        fontSize: '16px',
+                        outline: 'none',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <option value="" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Seleccionar modo de red</option>
+                      <option value="wifi" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>WiFi</option>
+                      <option value="espnow" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>ESP-NOW</option>
+                      <option value="lora" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>LoRa</option>
+                    </select>
+                  </div>
                 </Grid>
                 {formulario.failover === 'wifi' && (
                   <>
