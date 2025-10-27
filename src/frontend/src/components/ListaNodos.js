@@ -1,4 +1,5 @@
-﻿// Componente para listar, agregar, editar y eliminar nodos
+﻿/* eslint-disable unicode-bom */
+// Componente para listar, agregar, editar y eliminar nodos
 import React, { useState, useEffect } from 'react';
 
 
