@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Box, Grid, TextField, Typography, Chip, Paper, Tooltip,
   Dialog, DialogTitle, DialogContent, DialogActions, Button,
-  FormControl, InputLabel, CircularProgress,
+  CircularProgress,
   Alert, Divider, IconButton
 } from '@mui/material';
 import { Close as CloseIcon } from '@mui/icons-material';
@@ -633,48 +633,64 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
           )}
 
           {/* Selector de tipo de dispositivo */}
-          <FormControl fullWidth sx={{ mb: 3 }}>
-            <InputLabel sx={{ color: '#d0d0d0' }}>Tipo de Dispositivo</InputLabel>
+          <div style={{ marginBottom: '24px', width: '100%' }}>
+            <label style={{ 
+              display: 'block', 
+              color: '#d0d0d0', 
+              marginBottom: '8px',
+              fontSize: '16px',
+              fontWeight: 400
+            }}>
+              Tipo de Dispositivo
+            </label>
             <select
               value={tipoDispositivo}
               onChange={(e) => setTipoDispositivo(e.target.value)}
               disabled={!!obtenerAsignacionGPIO(gpioSeleccionado)}
               style={{
                 width: '100%',
-                padding: '16px 14px',
+                padding: '12px 14px',
                 backgroundColor: '#1a1f2e',
                 color: '#f5f5f5',
                 border: '1px solid #394150',
                 borderRadius: '4px',
                 fontSize: '16px',
-                outline: 'none'
+                outline: 'none',
+                cursor: !!obtenerAsignacionGPIO(gpioSeleccionado) ? 'not-allowed' : 'pointer'
               }}
             >
               <option value="" disabled style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Seleccionar tipo</option>
               <option value="sensor" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Sensor</option>
               <option value="actuador" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Actuador</option>
             </select>
-          </FormControl>
+          </div>
 
           {/* Selector de definición */}
           {tipoDispositivo && (
             <>
-              <FormControl fullWidth sx={{ mb: 2 }}>
-                <InputLabel sx={{ color: '#d0d0d0' }}>
+              <div style={{ marginBottom: '16px', width: '100%' }}>
+                <label style={{ 
+                  display: 'block', 
+                  color: '#d0d0d0', 
+                  marginBottom: '8px',
+                  fontSize: '16px',
+                  fontWeight: 400
+                }}>
                   {tipoDispositivo === 'sensor' ? 'Sensor' : 'Actuador'}
-                </InputLabel>
+                </label>
                 <select
                   value={definicionSeleccionada}
                   onChange={(e) => setDefinicionSeleccionada(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '16px 14px',
+                    padding: '12px 14px',
                     backgroundColor: '#1a1f2e',
                     color: '#f5f5f5',
                     border: '1px solid #394150',
                     borderRadius: '4px',
                     fontSize: '16px',
-                    outline: 'none'
+                    outline: 'none',
+                    cursor: 'pointer'
                   }}
                 >
                   <option value="" disabled style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>
@@ -686,7 +702,7 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
                     </option>
                   ))}
                 </select>
-              </FormControl>
+              </div>
 
               <Divider sx={{ my: 2, borderColor: '#394150' }} />
 
