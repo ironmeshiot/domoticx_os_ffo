@@ -88,6 +88,7 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
 
   // Cargar asignaciones de sensores y actuadores
   useEffect(() => {
+    console.log('GPIOManager mounted', { nodoId, gpioSensores, gpioActuadores, gpioLibres });
     if (!nodoId) return;
     
     const cargarAsignaciones = async () => {
@@ -110,6 +111,7 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
 
   // Función para abrir modal al hacer clic en un GPIO
   const handleGPIOClick = async (gpio) => {
+    console.log('GPIO click', { gpio, nodoId });
     if (!nodoId) {
       alert('No se puede asignar dispositivos sin un ID de nodo');
       return;
