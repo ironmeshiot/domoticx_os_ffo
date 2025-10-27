@@ -641,11 +641,12 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
               disabled={!!obtenerAsignacionGPIO(gpioSeleccionado)}
               MenuProps={{
                 disableScrollLock: true,
-                container: document.body,
+                disablePortal: false,
                 PaperProps: {
                   sx: {
                     bgcolor: '#1a1f2e',
                     maxHeight: 120,
+                    zIndex: 9999,
                     '& .MuiMenuItem-root': {
                       color: '#f5f5f5',
                       py: 1.5,
@@ -697,11 +698,12 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
                   onChange={(e) => setDefinicionSeleccionada(e.target.value)}
                   MenuProps={{
                     disableScrollLock: true,
-                    container: document.body,
+                    disablePortal: false,
                     PaperProps: {
                       sx: {
                         bgcolor: '#1a1f2e',
                         maxHeight: 180,
+                        zIndex: 9999,
                         '& .MuiMenuItem-root': {
                           color: '#f5f5f5',
                           py: 1.5,
