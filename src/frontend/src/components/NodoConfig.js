@@ -397,6 +397,7 @@ function NodoConfig({ nodo, onGuardar, onCancelar }) {
             {/* Pestaña GPIOs */}
             {tabIdx === 2 && (
               <GPIOManager
+                nodoId={nodo.id}
                 gpioSensores={formulario.gpioSensores}
                 gpioActuadores={formulario.gpioActuadores}
                 gpioLibres={formulario.gpioLibres}
