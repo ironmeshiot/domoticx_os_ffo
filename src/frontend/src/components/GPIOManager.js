@@ -113,7 +113,8 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
   const handleGPIOClick = async (gpio) => {
     console.log('GPIO click', { gpio, nodoId });
     if (!nodoId) {
-      alert('No se puede asignar dispositivos sin un ID de nodo');
+      // En lugar de alert, mostrar mensaje en UI
+      setError('Para asignar dispositivos, primero guarda el nodo y luego usa "Gestionar Dispositivos".');
       return;
     }
 
@@ -414,9 +415,9 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
           return (
             <Tooltip key={gpio} title={obtenerTooltip(gpio)} arrow>
               <div 
-                className={`${obtenerClaseGPIO(gpio)} ${!isRestricted ? 'gpio-clickeable' : ''}`}
-                onClick={() => !isRestricted && handleGPIOClick(gpio)}
-                style={{ cursor: isRestricted ? 'not-allowed' : 'pointer' }}
+                className={`${obtenerClaseGPIO(gpio)} ${!isRestricted && nodoId ? 'gpio-clickeable' : ''}`}
+                onClick={() => !isRestricted && nodoId && handleGPIOClick(gpio)}
+                style={{ cursor: isRestricted || !nodoId ? 'not-allowed' : 'pointer' }}
               >
                 <span className="gpio-number">{gpio}</span>
                 {pinInfo && (
@@ -524,6 +525,13 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
       </Box>
 
       {/* Grid de GPIOs */}
+      {!nodoId && (
+        <Paper sx={{ p: 2, mb: 3, bgcolor: '#2d1f1f', border: '1px solid #dc2626' }}>
+          <Typography variant="body2" sx={{ color: '#fca5a5' }}>
+            ⚠️ <strong>No se puede asignar dispositivos:</strong> Primero guarda el nodo y luego usa "Gestionar Dispositivos" para asignar sensores/actuadores a GPIOs.
+          </Typography>
+        </Paper>
+      )}
       <Paper sx={{ p: 2, bgcolor: '#1a1f2e', mb: 3 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
           <Typography variant="h6" sx={{ color: '#d0d0d0' }}>
