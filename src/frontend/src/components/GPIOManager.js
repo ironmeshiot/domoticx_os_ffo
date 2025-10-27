@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   Box, Grid, TextField, Typography, Chip, Paper, Tooltip,
   Dialog, DialogTitle, DialogContent, DialogActions, Button,
-  FormControl, InputLabel, Select, MenuItem, CircularProgress,
+  FormControl, InputLabel, CircularProgress,
   Alert, Divider, IconButton
 } from '@mui/material';
-import { Close as CloseIcon, Sensors as SensorsIcon, Power as PowerIcon } from '@mui/icons-material';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { 
   getSensorAssignmentsByNode, 
   getActuatorAssignmentsByNode,
@@ -635,54 +635,25 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
           {/* Selector de tipo de dispositivo */}
           <FormControl fullWidth sx={{ mb: 3 }}>
             <InputLabel sx={{ color: '#d0d0d0' }}>Tipo de Dispositivo</InputLabel>
-            <Select
+            <select
               value={tipoDispositivo}
               onChange={(e) => setTipoDispositivo(e.target.value)}
               disabled={!!obtenerAsignacionGPIO(gpioSeleccionado)}
-              MenuProps={{
-                disableScrollLock: true,
-                container: document.body,
-                PaperProps: {
-                  sx: {
-                    bgcolor: '#1a1f2e',
-                    maxHeight: 120,
-                    '& .MuiMenuItem-root': {
-                      color: '#f5f5f5',
-                      py: 1.5,
-                      '&:hover': {
-                        bgcolor: '#2d3748'
-                      },
-                      '&.Mui-selected': {
-                        bgcolor: '#394150',
-                        '&:hover': {
-                          bgcolor: '#4a5568'
-                        }
-                      }
-                    }
-                  }
-                }
-              }}
-              sx={{
+              style={{
+                width: '100%',
+                padding: '16px 14px',
+                backgroundColor: '#1a1f2e',
                 color: '#f5f5f5',
-                '.MuiOutlinedInput-notchedOutline': { borderColor: '#394150' },
-                '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#5b6474' },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#7dd3fc' },
-                '.MuiSvgIcon-root': { color: '#888' }
+                border: '1px solid #394150',
+                borderRadius: '4px',
+                fontSize: '16px',
+                outline: 'none'
               }}
             >
-              <MenuItem value="sensor">
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <SensorsIcon sx={{ fontSize: 20, color: '#10b981' }} />
-                  Sensor
-                </Box>
-              </MenuItem>
-              <MenuItem value="actuador">
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <PowerIcon sx={{ fontSize: 20, color: '#f59e0b' }} />
-                  Actuador
-                </Box>
-              </MenuItem>
-            </Select>
+              <option value="" disabled style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Seleccionar tipo</option>
+              <option value="sensor" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Sensor</option>
+              <option value="actuador" style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>Actuador</option>
+            </select>
           </FormControl>
 
           {/* Selector de definición */}
@@ -692,51 +663,29 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
                 <InputLabel sx={{ color: '#d0d0d0' }}>
                   {tipoDispositivo === 'sensor' ? 'Sensor' : 'Actuador'}
                 </InputLabel>
-                <Select
+                <select
                   value={definicionSeleccionada}
                   onChange={(e) => setDefinicionSeleccionada(e.target.value)}
-                  MenuProps={{
-                    disableScrollLock: true,
-                    container: document.body,
-                    PaperProps: {
-                      sx: {
-                        bgcolor: '#1a1f2e',
-                        maxHeight: 180,
-                        '& .MuiMenuItem-root': {
-                          color: '#f5f5f5',
-                          py: 1.5,
-                          '&:hover': {
-                            bgcolor: '#2d3748'
-                          },
-                          '&.Mui-selected': {
-                            bgcolor: '#394150',
-                            '&:hover': {
-                              bgcolor: '#4a5568'
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }}
-                  sx={{
+                  style={{
+                    width: '100%',
+                    padding: '16px 14px',
+                    backgroundColor: '#1a1f2e',
                     color: '#f5f5f5',
-                    '.MuiOutlinedInput-notchedOutline': { borderColor: '#394150' },
-                    '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#5b6474' },
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#7dd3fc' },
-                    '.MuiSvgIcon-root': { color: '#888' }
+                    border: '1px solid #394150',
+                    borderRadius: '4px',
+                    fontSize: '16px',
+                    outline: 'none'
                   }}
                 >
+                  <option value="" disabled style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>
+                    Seleccionar {tipoDispositivo === 'sensor' ? 'sensor' : 'actuador'}
+                  </option>
                   {definicionesDisponibles.map(def => (
-                    <MenuItem key={def.id} value={def.id}>
-                      <Box>
-                        <Typography variant="body2">{def.nombre}</Typography>
-                        <Typography variant="caption" sx={{ color: '#888' }}>
-                          {def.modelo} - {def.tipo}
-                        </Typography>
-                      </Box>
-                    </MenuItem>
+                    <option key={def.id} value={def.id} style={{ backgroundColor: '#1a1f2e', color: '#f5f5f5' }}>
+                      {def.nombre} - {def.modelo} ({def.tipo})
+                    </option>
                   ))}
-                </Select>
+                </select>
               </FormControl>
 
               <Divider sx={{ my: 2, borderColor: '#394150' }} />
