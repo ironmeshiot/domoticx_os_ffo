@@ -641,6 +641,7 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
               disabled={!!obtenerAsignacionGPIO(gpioSeleccionado)}
               MenuProps={{
                 disableScrollLock: true,
+                container: document.body,
                 PaperProps: {
                   sx: {
                     bgcolor: '#1a1f2e',
@@ -696,6 +697,7 @@ function GPIOManager({ gpioSensores, gpioActuadores, gpioLibres, onChange, tipoN
                   onChange={(e) => setDefinicionSeleccionada(e.target.value)}
                   MenuProps={{
                     disableScrollLock: true,
+                    container: document.body,
                     PaperProps: {
                       sx: {
                         bgcolor: '#1a1f2e',
